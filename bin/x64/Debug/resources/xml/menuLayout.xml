@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<Root>
+  <ModelList>
+     <List>
+		<!--<Model name ="nanosuit" filePath = "res/models/nanosuit/nanosuit.obj" </Model>-->
+     </List>
+ 
+
+    <List>
+      <shader name ="skybox" vertexPath = "res/shader/skyBox.vert" fragmentPath = "res/shader/skyBox.frag"></shader>
+      <shader name ="model" vertexPath = "res/shaders/basic.vert" fragmentPath = "res/shaders/basic.frag"></shader>
+      <shader name ="primitive" vertexPath = "res/shader/primitive.vert" fragmentPath = "res/shader/primitive.frag"></shader>
+      <shader name ="text" vertexPath = "res/shader/text.vert" fragmentPath = "res/shader/text.frag"></shader>
+	  <shader name ="basic" vertexPath = "res/shader/basic.vert" fragmentPath = "res/shader/basic.frag"></shader>
+	</List>
+	
+	<List>
+    <image name ="block" imagePath = "res/img/block.png"></image>
+	<image name ="roboTex" imagePath = "../textures/roboTex.jpg"></image>
+	</List>
+    
+  </ModelList>
+  
+  <LoadLevel>
+	<List>
+	
+	<sceneObject>
+      <name>text</name>
+	   <text>Start</text>
+      <positionX>130</positionX><positionY>300</positionY><positionZ>0</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>1</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+	
+	<sceneObject>
+      <name>text</name>
+	   <text>Settings Unavailable</text>
+      <positionX>70</positionX><positionY>200</positionY><positionZ>0</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>1</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+	
+	<sceneObject>
+      <name>text</name>
+	   <text>Quit</text>
+      <positionX>130</positionX><positionY>100</positionY><positionZ>0</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>1</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+	
+	<sceneObject>
+      <name>image</name>
+	   <text>block</text>
+      <positionX>45</positionX><positionY>270</positionY><positionZ>0</positionZ>
+      <scaleX>200</scaleX><scaleY>50</scaleY>
+    </sceneObject>
+	
+	<sceneObject>
+      <name>image</name>
+	   <text>block</text>
+      <positionX>45</positionX><positionY>170</positionY><positionZ>0</positionZ>
+      <scaleX>200</scaleX><scaleY>50</scaleY>
+    </sceneObject>
+	
+	<sceneObject>
+      <name>image</name>
+	   <text>block</text>
+      <positionX>45</positionX><positionY>70</positionY><positionZ>0</positionZ>
+      <scaleX>200</scaleX><scaleY>50</scaleY>
+    </sceneObject>
+	
+	
+	
+	<sceneObject>
+      <name>sceneLight</name>
+      <positionX>0</positionX><positionY>0</positionY><positionZ>0</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>0</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+	
+    <sceneObject>
+      <name>menuCamera</name>
+      <positionX>40</positionX><positionY>31</positionY><positionZ>195</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>0</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+
+    <sceneObject>
+      <name>robot</name>
+	  <texture>roboTex</texture>
+	  <positionX>100</positionX><positionY>16</positionY><positionZ>1</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>0</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+	
+	  <sceneObject>
+      <name>robot</name>
+	  <texture>roboTex</texture>
+	  <positionX>1</positionX><positionY>16</positionY><positionZ>100</positionZ>
+      <rotaionAngle>0</rotaionAngle>
+      <rotaionXAxsis>0</rotaionXAxsis><rotaionYAxsis>0</rotaionYAxsis><rotaionZAxsis>0</rotaionZAxsis>
+      <scale>1</scale>
+    </sceneObject>
+    </List>
+  </LoadLevel>
+  
+</Root>
