@@ -58,6 +58,15 @@
     <Filter Include="Source Files\Components\Audio &amp; UI">
       <UniqueIdentifier>{fb24592b-2f4f-4b38-bd42-a573ad98f55f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Python">
+      <UniqueIdentifier>{67bfc10a-97e3-4a88-89e6-7be89c9c1c20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Python">
+      <UniqueIdentifier>{47522bc4-f89a-4f18-813d-5e8ddc0b665a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ASR">
+      <UniqueIdentifier>{4d0f5e98-49ae-4780-ba92-78ff4aa66fd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\basic.vert">
@@ -230,6 +239,15 @@
     <ClInclude Include="include\GuiManager.h">
       <Filter>Header Files\Components\Audio &amp; UI</Filter>
     </ClInclude>
+    <ClInclude Include="include\PythonEmbedder.h">
+      <Filter>Header Files\Python</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PyModules.h">
+      <Filter>Header Files\Python</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpeechRecognition.h">
+      <Filter>Header Files\ASR</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -339,6 +357,9 @@
     </ClCompile>
     <ClCompile Include="src\TextureLoader.cpp">
       <Filter>Source Files\Components\Audio &amp; UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PythonEmbedder.cpp">
+      <Filter>Source Files\Python</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

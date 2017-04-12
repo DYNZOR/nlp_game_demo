@@ -105,11 +105,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)libs\;libs\GLFW\glfw-3.1.2.bin.WIN64\include;libs\glm;libs\GLLoadGen\include;</AdditionalIncludeDirectories>
+      <AdditionalOptions>-DBOOST_PYTHON_STATIC_LIB %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>libs\FMOD\lib64;fmod64_vc.lib;$(SolutionDir)libs\GLFW\glfw-3.1.2.bin.WIN64\lib-vc2015</AdditionalLibraryDirectories>
       <AdditionalDependencies>boost_python3-vc140-mt-gd-1_63.lib;fmod64_vc.lib;assimp.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>-DBOOST_PYTHON_STATIC_LIB %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -178,8 +180,10 @@
     <ClInclude Include="include\Mesh.h" />
     <ClInclude Include="include\Model.h" />
     <ClInclude Include="include\ModelManager.h" />
+    <ClInclude Include="include\PyModules.h" />
     <ClInclude Include="include\ObjectFactory.h" />
     <ClInclude Include="include\PointLight.h" />
+    <ClInclude Include="include\PythonEmbedder.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneLight.h" />
     <ClInclude Include="include\SceneManager.h" />
@@ -191,6 +195,7 @@
     <ClInclude Include="include\Sound2DComponent.h" />
     <ClInclude Include="include\Sound3DComponent.h" />
     <ClInclude Include="include\SoundManager.h" />
+    <ClInclude Include="include\SpeechRecognition.h" />
     <ClInclude Include="include\splashScreen.h" />
     <ClInclude Include="include\SpotLight.h" />
     <ClInclude Include="include\StartScene.h" />
@@ -222,6 +227,7 @@
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\ModelManager.cpp" />
     <ClCompile Include="src\ObjectFactory.cpp" />
+    <ClCompile Include="src\PythonEmbedder.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\SceneModel.cpp" />
     <ClCompile Include="src\SceneObject.cpp" />

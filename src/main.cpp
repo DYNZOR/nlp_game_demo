@@ -1,15 +1,45 @@
 #include "stdafx.h"
 #include "gl_core_4_3.hpp"
 
+#include <sapi53.h>
+
 // Boost includes 
-//#define BOOST_PYTHON_STATIC_LIB
-//#include <Python.h>
-#include <boost/python.hpp>
+//#include <boost/python.hpp>
+//#include <boost/filesystem.hpp>
+//#include <stdlib.h>
+
+#include "PythonEmbedder.h"
 
 #include "SceneManager.h"
 #include "MainScene.h"
 
-namespace python = boost::python;
+//namespace bp = boost::python;
+
+//
+//struct SentenceData
+//{
+//	int words;
+//	std::string sentence;
+//};
+//
+//BOOST_PYTHON_MODULE(SentenceModule)
+//{
+//
+//	bp::class_<SentenceData>("SentenceData")
+//		.def_readwrite("words", &SentenceData::words)
+//		.def_readwrite("sentence", &SentenceData::sentence)
+//		;
+//}
+
+
+const ULONGLONG grammarId = 0;
+const wchar_t* ruleName1 = L"ruleName1";
+
+int start_listening(const std::string& word); // test function 
+ISpRecoGrammar* init_grammar(ISpRecoContext* recoContext, const std::string& command);
+void get_text(ISpRecoContext* reco_context);
+void check_result(const HRESULT& result);
+
 
 
 
@@ -19,45 +49,12 @@ namespace python = boost::python;
 ///////////////////////////////////////////////////////
 int main(int argc, char ** argv)
 {
-	try
-	{
-		Py_Initialize();
-
-		python::object main_module = python::import("__main__");
-
-		python::object global = main_module.attr("__dict__");
-		
-		// Define greet function in Python.
-		python::object result = exec(
-			"def greet():                   \n"
-			"   return 'Hello from Python!' \n",
-			global, global);
-
-		// Load the greet function from a file.
-		//python::object result = exec_file("test.txt", global, global);
-
-		// Create a reference to it.
-		python::object greet = global["greet"];
-
-		// Call it.
-		std::string message = python::extract<std::string>(greet());
-		std::cout << message << std::endl;
+	// Embedding python // 
+	PythonEmbedder PyEmbedder = PythonEmbedder();
 
 
-		return 0;
-	}
-	catch (python::error_already_set&) {
-
-		std::cerr << ">>> Error! Uncaught exception: \n";
-		PyErr_Print();
-	}
-
-		
-
-
-
-	// https://skebanga.github.io/embedded-python-pybind11/
-
+	// Speech recognition //
+	start_listening("Hello");
 
 	//SceneManager* manager = SceneManager::SceneManagerInstance();
 
@@ -73,169 +70,187 @@ int main(int argc, char ** argv)
 
 
 	// Exit program
-	//exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
-//try 
-//{
-//	Py_Initialize();
-//	pybind11_init();
+// This function exits when the word passed as parameter is said by the user
+int start_listening(const std::string& word)
+{
+	// Initialize COM library
+	if (FAILED(::CoInitialize(nullptr))) {
+		return EXIT_FAILURE;
+	}
 
-//	StrategyServer server;
+	std::cout << "You should start Windows Recognition" << std::endl;
+	std::cout << "Just say \"" << word << "\"" << std::endl;
 
-//	py::object main = py::module::import("__main__");
-//	py::object globals = main.attr("__dict__");
-//	//py::object module = import("strategy", "C:\\Users\\DYN\Desktop\\ACI_Mini_Project\\src\\strategy.py", globals);
-//	py::object module = import("strategy", "strategy.py", globals);
-//	py::object Strategy = module.attr("Strategy");
-//	py::object strategy = Strategy(&server);
+	HRESULT hr;
 
-//	strategy.attr("eval")();
+	ISpRecognizer* recognizer;
+	
+	hr = CoCreateInstance(CLSID_SpSharedRecognizer,
+		nullptr, CLSCTX_ALL, IID_ISpRecognizer,
+		reinterpret_cast<void**>(&recognizer));
+	check_result(hr);
 
-//	return 0;
-//
-//}
-//catch (const py::error_already_set&)
-//{
-//	std::cerr << ">>> Error! Uncaught exception: \n";
-//	PyErr_Print();
-//	return 1;
-//}
-//
+	// Create a new reco context using the recogniser. 
+	ISpRecoContext* recoContext;
+	hr = recognizer->CreateRecoContext(&recoContext);
+	check_result(hr);
 
-//
-//enum Side
-//{
-//	BUY,
-//	SELL
-//};
-//
-//struct Order
-//{
-//	std::string symbol;
-//	Side        side;
-//	int         size;
-//	double      price;
-//	int         order_id;
-//};
-//
-//class StrategyInstance;
-//
-//class StrategyServer
-//{
-//public:
-//	void sendOrder(StrategyInstance&, const std::string& symbol, Side, int size, double price);
-//private:
-//	int _next_order_id = 0;
-//};
-//
-//class StrategyInstance
-//{
-//public:
-//	StrategyInstance(StrategyServer*);
-//	virtual ~StrategyInstance() = default;
-//
-//	virtual void eval() = 0;
-//	virtual void onOrder(const Order&) = 0;
-//
-//	void sendOrder(const std::string& symbol, Side, int size, double price);
-//
-//private:
-//	StrategyServer& _server;
-//};
-//
-/////////////////////////////////////
-//
-//void StrategyServer::sendOrder(StrategyInstance& instance, const std::string& symbol, Side side, int size, double price)
-//{
-//	// simulate sending an order, receiving an acknowledgement and calling back to the strategy instance
-//
-//	std::cout << "sending order to market\n";
-//
-//	Order order{ symbol, side, size, price, ++_next_order_id };
-//	instance.onOrder(order);
-//}
-//
-/////////////////////////////////////
-//
-//StrategyInstance::StrategyInstance(StrategyServer* server)
-//	: _server(*server)
-//{
-//}
-//
-//void StrategyInstance::sendOrder(const std::string& symbol, Side side, int size, double price)
-//{
-//	_server.sendOrder(*this, symbol, side, size, price);
-//}
-//
-//////////////////////////////////////
-//
-//
-//class PyStrategyInstance final
-//	: public StrategyInstance
-//{
-//	using StrategyInstance::StrategyInstance;
-//
-//	void eval() override
-//	{
-//		PYBIND11_OVERLOAD_PURE(
-//			void,              // return type
-//			StrategyInstance,  // super class
-//			eval               // function name
-//		);
-//	}
-//
-//	void onOrder(const Order& order) override
-//	{
-//		PYBIND11_OVERLOAD_PURE_NAME(
-//			void,              // return type
-//			StrategyInstance,  // super class
-//			"on_order",        // python function name
-//			onOrder,           // function name
-//			order              // args
-//		);
-//	}
-//};
-//
-//PYBIND11_PLUGIN(StrategyFramework)
-//{
-//	py::module m("StrategyFramework", "Example strategy framework");
-//
-//	py::enum_<Side>(m, "Side")
-//		.value("BUY", BUY)
-//		.value("SELL", SELL)
-//		;
-//
-//	py::class_<Order>(m, "Order")
-//		.def_readonly("symbol", &Order::symbol)
-//		.def_readonly("side", &Order::side)
-//		.def_readwrite("size", &Order::size)
-//		.def_readwrite("price", &Order::price)
-//		.def_readonly("order_id", &Order::order_id)
-//		;
-//
-//	py::class_<StrategyServer>(m, "StrategyServer")
-//		;
-//
-//	py::class_<StrategyInstance, PyStrategyInstance>(m, "StrategyInstance")
-//		.def(py::init<StrategyServer*>())
-//		.def("send_order", &StrategyInstance::sendOrder)
-//		;
-//
-//	return m.ptr();
-//}
-//
-//py::object import(const std::string& module, const std::string& path, py::object& globals)
-//{
-//	py::dict locals;
-//	locals["module_name"] = py::cast(module);
-//	locals["path"] = py::cast(path);
-//
-//	py::eval<py::eval_statements>(
-//		"import imp\n"
-//		"new_module = imp.load_module(module_name, open(path), path, ('py', 'U', imp.PY_SOURCE))\n",
-//		globals,
-//		locals);
-//
-//	return locals["new_module"];
-//}
+	// Disable context
+	hr = recoContext->Pause(0);
+	check_result(hr);
+
+	ISpRecoGrammar* recoGrammar = init_grammar(recoContext, word);
+
+	hr = recoContext->SetNotifyWin32Event();
+	check_result(hr);
+
+	HANDLE handleEvent;
+	handleEvent = recoContext->GetNotifyEventHandle();
+	if (handleEvent == INVALID_HANDLE_VALUE) {
+		check_result(E_FAIL);
+	}
+
+	ULONGLONG interest;
+	interest = SPFEI(SPEI_RECOGNITION);
+	hr = recoContext->SetInterest(interest, interest);
+	check_result(hr);
+
+	//// Activate Grammar
+	hr = recoGrammar->SetDictationState(SPRS_ACTIVE);
+	check_result(hr);
+
+	//// Activate Grammar
+	//hr = recoGrammar->SetRuleState(ruleName1, 0, SPRS_ACTIVE);
+	//check_result(hr);
+
+	// Enable context
+	hr = recoContext->Resume(0);
+	check_result(hr);
+
+	// Wait for reco
+	HANDLE handles[1];
+	handles[0] = handleEvent;
+	WaitForMultipleObjects(1, handles, FALSE, INFINITE);
+	get_text(recoContext);
+
+	std::cout << "Hello user" << std::endl;
+
+	recoGrammar->Release();
+	::CoUninitialize();
+
+	system("PAUSE");
+	return EXIT_SUCCESS;
+}
+
+/**
+* Create and initialize the Grammar.
+* Create a rule for the grammar.
+* Add word to the grammar.
+*/
+ISpRecoGrammar* init_grammar(ISpRecoContext* recoContext, const std::string& command)
+{
+	HRESULT hr;
+	SPSTATEHANDLE sate;
+
+	ISpRecoGrammar* recoGrammar;
+	hr = recoContext->CreateGrammar(grammarId, &recoGrammar);
+	check_result(hr);
+
+	WORD langId = GetUserDefaultUILanguage();
+	hr = recoGrammar->ResetGrammar(langId);
+	check_result(hr);
+	// TODO: Catch error and use default langId => GetUserDefaultUILanguage()
+
+	hr = recoGrammar->LoadDictation(NULL, SPLO_STATIC);
+	check_result(hr);
+
+	//// Create rules
+	//hr = recoGrammar->GetRule(ruleName1, 0, SPRAF_TopLevel | SPRAF_Active, true, &sate);
+	//check_result(hr);
+
+	// Add a word
+	//const std::wstring commandWstr = std::wstring(command.begin(), command.end());
+	//hr = recoGrammar->AddWordTransition(sate, NULL, commandWstr.c_str(), L" ", SPWT_LEXICAL, 1, nullptr);
+	//check_result(hr);
+
+	// Commit changes
+	//hr = recoGrammar->Commit(0);
+	//check_result(hr);
+
+	return recoGrammar;
+}
+
+void get_text(ISpRecoContext* reco_context)
+{
+	const ULONG maxEvents = 10;
+	SPEVENT events[maxEvents];
+
+	ULONG eventCount;
+	HRESULT hr;
+	hr = reco_context->GetEvents(maxEvents, events, &eventCount);
+
+	// Warning hr equal S_FALSE if everything is OK 
+	// but eventCount < requestedEventCount
+	if (!(hr == S_OK || hr == S_FALSE)) {
+		check_result(hr);
+	}
+
+	ISpRecoResult* recoResult;
+	recoResult = reinterpret_cast<ISpRecoResult*>(events[0].lParam);
+
+	// Retrieves the spoken text and converts to string. 
+	wchar_t* text;
+	hr = recoResult->GetText(SP_GETWHOLEPHRASE, SP_GETWHOLEPHRASE, FALSE, &text, NULL);
+	std::wstring ws(text);
+	std::string string(ws.begin(), ws.end());
+
+
+	check_result(hr);
+
+	CoTaskMemFree(text);
+}
+
+void check_result(const HRESULT& result)
+{
+	if (result == S_OK) {
+		return;
+	}
+
+	std::string message;
+
+	switch (result) {
+
+	case E_INVALIDARG:
+		message = "One or more arguments are invalids.";
+
+	case E_ACCESSDENIED:
+		message = "Acces Denied.";
+
+	case E_NOINTERFACE:
+		message = "Interface does not exist.";
+
+	case E_NOTIMPL:
+		message = "Not implemented method.";
+
+	case E_OUTOFMEMORY:
+		message = "Out of memory.";
+
+	case E_POINTER:
+		message = "Invalid pointer.";
+
+	case E_UNEXPECTED:
+		message = "Unexpecter error.";
+
+	case E_FAIL:
+		message = "Failure";
+
+	default:
+		message = "Unknown : " + std::to_string(result);
+	}
+
+	throw std::exception(message.c_str());
+}
+

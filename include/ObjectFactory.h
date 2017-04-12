@@ -17,15 +17,6 @@
 #include "SceneModel.h"
 #include "SceneLight.h"
 
-//#include "menucam.h"
-//#include "robotOBJ.h"
-//#include "sceneObject.h"
-//#include "sceneLight.h"
-//#include "textObject.h"
-//#include "imageObject.h"
-//#include "imageComponent.h"
-//#include "textReportObject.h"
-
 //! Object Factory class
 /*!
 	This class uses the object factory pattern for creating various scene objects 
