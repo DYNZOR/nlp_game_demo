@@ -1,6 +1,6 @@
 #include "SceneManager.h"
 
-#include "StartScene.h"
+#include "Scene.h"
 #include <iostream>
 
 #include "splashScreen.h"
@@ -13,6 +13,8 @@ SceneManager* SceneManager::sceneManager;
 
 void SceneManager::init()
 {
+
+	std::cout << "Initialising GLFW..." << std::endl;
 	// Initialize GLFW
 	if (!glfwInit()) exit(EXIT_FAILURE);
 
@@ -32,7 +34,7 @@ void SceneManager::init()
 
 	bool bIsFullScreen;
 
-	bIsFullScreen = true;
+	bIsFullScreen = false;
 
 	if (bIsFullScreen)
 	{
@@ -90,6 +92,7 @@ void SceneManager::init()
 
 void SceneManager::changeScene(Scene* sceneIn)
 {
+	std::cout << "Initialising Scene..." << std::endl;
 	if (!scenes.empty())
 	{
 		//scenes.back()->Cleanup();
@@ -155,32 +158,6 @@ void SceneManager::mainLoop()
 
 		render();
 		updateAI(fInterval);
-
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
-		fLastTime = fCurrentTime;
-	}
-}
-
-void SceneManager::mainLoopVR()
-{
-	float fLastTime = (float)glfwGetTime();
-
-	while (!glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE)) {
-
-
-		float fCurrentTime = (float)glfwGetTime();
-		float fInterval = fCurrentTime - fLastTime;
-
-		handleInput(fInterval);
-
-		update(fInterval);
-
-		render();
-		updateAI(fInterval);
-
-
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

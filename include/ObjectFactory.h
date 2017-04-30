@@ -36,7 +36,7 @@ public:
 	\param text The text of the object deafault is none
 	*/
 	std::shared_ptr<SceneObject> createObject(std::string objectName, glm::vec3 pos = glm::vec3(0), glm::quat rotation = glm::quat(0, glm::vec3(0, 0, 0)), glm::vec3 scale = glm::vec3(1), std::string text = "");
-	std::shared_ptr<SceneModel> createModel(std::string objectName, glm::vec3 pos, glm::quat rotation, glm::vec3 vScale, const char* progName, std::string aiBehaviour, glm::vec3 vPos2, float fAi2);
+	std::shared_ptr<SceneModel> createModel(std::string entityname, std::string filename, glm::vec3 pos, glm::quat rotation, glm::vec3 vScale, const char* progName, std::string aiBehaviour, glm::vec3 vPos2, float fAi2);
 	//std::shared_ptr<SceneLight> createLight(std::string objectName, glm::vec3 pos = glm::vec3(0), glm::quat rotation = glm::quat(0, glm::vec3(0, 0, 0)), glm::vec3 scale = glm::vec3(1), std::string text = "");
 
 

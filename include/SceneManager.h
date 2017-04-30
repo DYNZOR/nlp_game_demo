@@ -50,16 +50,12 @@ public:
 		}
 	} //!< Returns a pointer to the Scene manager instance 
 
-	void loadXMLFile(const std::string filePath); //!< Loads scene from XML file
-
 	void init(); //!< Initialises a GLFW window and configures some opengl and glfw settings 
-	void initVR();
 	void handleInput(float t); //!< Handles keyboard and mouse user input to the system 
 	void update(float fInterval /*!< Interval at which to update */); 	//!< Updates the scene at the back of the vector 
 	void render();//!< Renders the scene at the back of the vector 
 	void updateAI(float fInterval);
 	void mainLoop(); //!< Scene manager mainloop which until the window is closed, it renders and updates the active scene
-	void mainLoopVR(); // !< 
 
 	void clean(); //!< Cleans all the scenes stored in the vector 
 

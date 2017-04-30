@@ -71,10 +71,10 @@
     <SourcePath>.\src;.\libs\GLLoadGen\source;$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Boost;C:\Users\DYN\AppData\Local\Programs\Python\Python35\include;libs\freetype;libs\FMOD\include;libs\assimp-3.1.1\include;$(SolutionDir)\include\3rdParty;$(SolutionDir)\include;libs\GLLoadGen\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\3rdParty;C:\Users\DYN\AppData\Local\Programs\Python\Python35\include;libs\freetype;libs\FMOD\include;libs\assimp-3.1.1\include;$(SolutionDir)\include\3rdParty;$(SolutionDir)\include;libs\GLLoadGen\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <SourcePath>libs\GLLoadGen\source;$(VC_SourcePath);</SourcePath>
     <IntDir>$(SolutionDir)temp\$(Platform)\$(Configuration)\</IntDir>
-    <LibraryPath>C:\Boost\stage\lib;libs\FMOD\lib64;libs\assimp-3.1.1\lib64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Users\DYN\AppData\Local\Programs\Python\Python35\libs</LibraryPath>
+    <LibraryPath>$(SolutionDir)libs\boost\lib;libs\FMOD\lib64;libs\assimp-3.1.1\lib64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Users\DYN\AppData\Local\Programs\Python\Python35\libs</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <TargetExt>.dll</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
@@ -158,6 +158,7 @@
     <None Include="resources\shaders\texture.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AgentStates.h" />
     <ClInclude Include="include\ArtifIntelligent.h" />
     <ClInclude Include="include\AssetManager.h" />
     <ClInclude Include="include\Bitmap.h" />
@@ -165,12 +166,19 @@
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\CameraManager.h" />
     <ClInclude Include="include\Channel.h" />
+    <ClInclude Include="include\Collect_State.h" />
+    <ClInclude Include="include\CommandInterpreter.h" />
     <ClInclude Include="include\Config.h" />
     <ClInclude Include="include\CubeMap.h" />
     <ClInclude Include="include\DirectionalLight.h" />
     <ClInclude Include="include\Drawable.h" />
+    <ClInclude Include="include\EntityNames.h" />
+    <ClInclude Include="include\EnumParser.h" />
     <ClInclude Include="include\FmodSettings.h" />
     <ClInclude Include="include\FragmentShader.h" />
+    <ClInclude Include="include\MoveToLocation_State.h" />
+    <ClInclude Include="include\Rotate_State.h" />
+    <ClInclude Include="include\State.h" />
     <ClInclude Include="include\ft2build.h" />
     <ClInclude Include="include\GuiManager.h" />
     <ClInclude Include="include\imageComponent.h" />
@@ -180,11 +188,13 @@
     <ClInclude Include="include\Mesh.h" />
     <ClInclude Include="include\Model.h" />
     <ClInclude Include="include\ModelManager.h" />
+    <ClInclude Include="include\ObjectDescription.h" />
     <ClInclude Include="include\PyModules.h" />
     <ClInclude Include="include\ObjectFactory.h" />
     <ClInclude Include="include\PointLight.h" />
     <ClInclude Include="include\PythonEmbedder.h" />
     <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\SceneAnalyser.h" />
     <ClInclude Include="include\SceneLight.h" />
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\SceneModel.h" />
@@ -205,16 +215,19 @@
     <ClInclude Include="include\TextureLoader.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\Transformable.h" />
+    <ClInclude Include="include\UniqueIdDistributor.h" />
     <ClInclude Include="include\VertexShader.h" />
     <ClInclude Include="src\Object.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AgentStates.cpp" />
     <ClCompile Include="src\ArtifIntelligence.cpp" />
     <ClCompile Include="src\AssetManager.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Channel.cpp" />
+    <ClCompile Include="src\CollectState.cpp" />
     <ClCompile Include="src\CubeMap.cpp" />
     <ClCompile Include="src\FmodSettings.cpp" />
     <ClCompile Include="src\gl_core_4_3.cpp" />
@@ -226,8 +239,11 @@
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\ModelManager.cpp" />
+    <ClCompile Include="src\MoveToLocation_State.cpp" />
     <ClCompile Include="src\ObjectFactory.cpp" />
     <ClCompile Include="src\PythonEmbedder.cpp" />
+    <ClCompile Include="src\Rotate_State.cpp" />
+    <ClCompile Include="src\SceneAnalyser.cpp" />
     <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\SceneModel.cpp" />
     <ClCompile Include="src\SceneObject.cpp" />

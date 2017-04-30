@@ -54,19 +54,19 @@ int main(int argc, char ** argv)
 
 
 	// Speech recognition //
-	start_listening("Hello");
+	//start_listening("Hello");
 
-	//SceneManager* manager = SceneManager::SceneManagerInstance();
+	SceneManager* manager = SceneManager::SceneManagerInstance();
 
-	//manager->init();
+	manager->init();
 
-	//manager->changeScene(MainScene::Instance());
+	manager->changeScene(MainScene::Instance());
 
 	//manager->resizeGL(manager->getActiveSceneCamera(), 1920, 1080);
 
-	//manager->mainLoop();
+	manager->mainLoop();
 
-	//manager->clean();
+	manager->clean();
 
 
 	// Exit program
@@ -107,11 +107,10 @@ int start_listening(const std::string& word)
 	hr = recoContext->SetNotifyWin32Event();
 	check_result(hr);
 
-	HANDLE handleEvent;
-	handleEvent = recoContext->GetNotifyEventHandle();
-	if (handleEvent == INVALID_HANDLE_VALUE) {
-		check_result(E_FAIL);
-	}
+	//HANDLE handleEvent;
+	//if (handleEvent	 == INVALID_HANDLE_VALUE) {
+	//	check_result(E_FAIL);
+	//}
 
 	ULONGLONG interest;
 	interest = SPFEI(SPEI_RECOGNITION);
@@ -131,9 +130,9 @@ int start_listening(const std::string& word)
 	check_result(hr);
 
 	// Wait for reco
-	HANDLE handles[1];
-	handles[0] = handleEvent;
-	WaitForMultipleObjects(1, handles, FALSE, INFINITE);
+	//HANDLE handles[1];
+	//handles[0] = handleEvent;
+	//WaitForMultipleObjects(1, handles, FALSE, INFINITE);
 	get_text(recoContext);
 
 	std::cout << "Hello user" << std::endl;

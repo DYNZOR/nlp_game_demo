@@ -46,7 +46,7 @@ private:
 	std::vector<std::shared_ptr<SceneModel>> models; 
 	std::vector<std::shared_ptr<SceneModel>>::iterator modelsIt;
 
-	std::shared_ptr<SceneModel> modelSuit; 
+	//std::shared_ptr<SceneModel> modelSuit; 
 
 	ObjectFactory factory;
 
@@ -61,6 +61,8 @@ private:
 	Model* dragon;
 
 	float fAngle;
+
+	SceneAnalyser m_SceneAnalyser;
 
 protected:
 
@@ -90,7 +92,7 @@ public:
 
 	void loadSceneFromXML(const std::string ksPath);
 
-	std::vector<std::shared_ptr<SceneModel>> getModels() { return models;  }
+	std::vector<std::shared_ptr<SceneModel>>& getModels() { return models;  }
 	std::vector<std::shared_ptr<SceneModel>>::iterator getModelsIt() { return modelsIt; }
 
 };

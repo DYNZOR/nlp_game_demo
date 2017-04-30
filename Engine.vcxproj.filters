@@ -67,6 +67,30 @@
     <Filter Include="Header Files\ASR">
       <UniqueIdentifier>{4d0f5e98-49ae-4780-ba92-78ff4aa66fd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\NLP">
+      <UniqueIdentifier>{105f1315-5ff7-49d2-a364-3a49ab9b0b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NLP\Engine Commands">
+      <UniqueIdentifier>{f40f2f76-3b85-4f95-a22f-247275bd3a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NLP\Agent States">
+      <UniqueIdentifier>{2b1d0280-95b9-45bd-a90c-5d84679a8cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NLP\Integration">
+      <UniqueIdentifier>{79f9d3f9-a0ca-401a-b8af-7972bb0c0cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NLP">
+      <UniqueIdentifier>{c083fa40-f2ab-404a-af4b-82ea54116d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NLP\Agent States">
+      <UniqueIdentifier>{da81031e-1575-453a-919d-1e9c6b78e6f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NLP\Engine Commands">
+      <UniqueIdentifier>{fa26c9f4-9505-4721-9029-d69b71b513f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NLP\Integration">
+      <UniqueIdentifier>{be0a7741-d8e3-413a-b940-15d509e9984b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\basic.vert">
@@ -248,6 +272,39 @@
     <ClInclude Include="include\SpeechRecognition.h">
       <Filter>Header Files\ASR</Filter>
     </ClInclude>
+    <ClInclude Include="include\ObjectDescription.h">
+      <Filter>Header Files\Scene Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UniqueIdDistributor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collect_State.h">
+      <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rotate_State.h">
+      <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MoveToLocation_State.h">
+      <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State.h">
+      <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneAnalyser.h">
+      <Filter>Header Files\NLP\Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CommandInterpreter.h">
+      <Filter>Header Files\NLP\Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityNames.h">
+      <Filter>Header Files\NLP\Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EnumParser.h">
+      <Filter>Header Files\NLP\Integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AgentStates.h">
+      <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -360,6 +417,21 @@
     </ClCompile>
     <ClCompile Include="src\PythonEmbedder.cpp">
       <Filter>Source Files\Python</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rotate_State.cpp">
+      <Filter>Source Files\NLP\Agent States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MoveToLocation_State.cpp">
+      <Filter>Source Files\NLP\Agent States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollectState.cpp">
+      <Filter>Source Files\NLP\Agent States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AgentStates.cpp">
+      <Filter>Source Files\NLP\Agent States</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneAnalyser.cpp">
+      <Filter>Source Files\NLP\Integration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

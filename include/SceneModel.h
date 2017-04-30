@@ -9,6 +9,7 @@
 
 #include "SceneObject.h"
 #include "AssetManager.h"
+#include "State.h"
 
 class SceneModel : public SceneObject
 {
@@ -19,7 +20,8 @@ protected:
 public:
 
 	/** sets all the pointers to null. */
-	SceneModel(const std::string sNameIn, const glm::vec3 vPos, glm::quat qRotation, glm::vec3 vScale, const char* kcProgName, std::string kcAiBehaviour, glm::vec3 vPos2, float fAi2);
+	SceneModel(const std::string sEntityName, const std::string sFileNameIn, const glm::vec3 vPos, glm::quat qRotation, glm::vec3 vScale, 
+		const char* kcProgName, std::string kcAiBehaviour, glm::vec3 vPos2, float fAi2);
 	/**Resets the the pointer objects. */
 	~SceneModel();
 
@@ -35,7 +37,16 @@ public:
 
 	std::shared_ptr<Model> getModelHandle() { return pModel;  }
 
+	void ChangeState(State* pNewState)
+	{
+		delete m_pCurrentState;
+		m_pCurrentState = pNewState;
+	}
+
 private:
+	State* m_pCurrentState;
+
+
 	void turnTowards(glm::vec3 target);
 	
 };

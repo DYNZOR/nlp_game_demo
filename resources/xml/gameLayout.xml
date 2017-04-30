@@ -4,8 +4,9 @@
   
 <SceneObjects>
 
-  <!--<Model>
-      <name>Dragon 2.5_fbx.fbx</name>
+  <Model>
+      <filename>Dragon 2.5_fbx.fbx</filename>
+      <name>Bill</name>
       <positionX>-8.0</positionX>
       <positionY>-1.5</positionY>
       <positionZ>8.0</positionZ>
@@ -17,31 +18,13 @@
       <scaleY>1.0</scaleY>
       <scaleZ>1.0</scaleZ>
       <shaderProgram>basic</shaderProgram>
-	 <aiBehaviour>turret</aiBehaviour>
-	 </Model>-->
-
-    
-
-    <!--<Model>
-      <name>plane.fbx</name>
-      <positionX>0.0</positionX>
-      <positionY>-2.0</positionY>
-      <positionZ>0.0</positionZ>
-      <rotationAngle>0</rotationAngle>
-      <rotationXAxis>0.0</rotationXAxis>
-      <rotationYAxis>1.0</rotationYAxis>
-      <rotationZAxis>0.0</rotationZAxis>
-      <scaleX>10.0</scaleX>
-      <scaleY>0.1</scaleY>
-      <scaleZ>10.0</scaleZ>
-      <shaderProgram>basic</shaderProgram>
 	 <aiBehaviour>none</aiBehaviour>
-    </Model>-->
+	 </Model>
 
-
-  
+   
     <Model>
-      <name>Majora2.obj</name>
+      <filename>Majora2.obj</filename>
+      <name>Bob</name> 
       <positionX>0.0</positionX>
       <positionY>-1.5</positionY>
       <positionZ>0.0</positionZ>

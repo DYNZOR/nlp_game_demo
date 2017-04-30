@@ -30,6 +30,10 @@ void MainScene::initScene(SceneManager* manager)
 
 	loadSceneFromXML("resources/xml/gameLayout.xml");
 
+	m_SceneAnalyser.ReadScene(this);
+
+	bool exists = m_SceneAnalyser.EntityExists("Bob");
+
 
 	cubeMap = std::make_shared<CubeMap>("moonwaw");
 	cubeMap->setActiveShader(AssetManager::AssetManagerInstance()->getShaderProgram("skybox"));
@@ -45,8 +49,6 @@ void MainScene::initScene(SceneManager* manager)
 	width = 1920;
 
 	
-
-
 	plane = new Model("plane.fbx");
 	plane->setPosition(0.0f, -2.0f, 0.0f);
 	//plane->setRotation(0.0f, 229.4f, 0.0f);
@@ -322,10 +324,11 @@ void MainScene::loadSceneFromXML(const std::string filePath)
 		//float tempScale;
 
 		float outFloat;
+		tinyxml2::XMLElement * pInsideListElement = pListElement->FirstChildElement("filename");
+		std::string fileName = std::string(pInsideListElement->GetText());
 
-		tinyxml2::XMLElement * pInsideListElement = pListElement->FirstChildElement("name");
-
-		std::string nameOfElement = std::string(pInsideListElement->GetText());
+		pInsideListElement = pInsideListElement->NextSiblingElement("name");
+		std::string entityName = string(pInsideListElement->GetText());
 
 		pInsideListElement = pInsideListElement->NextSiblingElement("positionX");
 		pInsideListElement->QueryFloatText(&outFloat);
@@ -396,7 +399,7 @@ void MainScene::loadSceneFromXML(const std::string filePath)
 			tempAi2 = outFloat;
 		}
 
-		models.push_back(factory.createModel(nameOfElement, tempPosition, tempRotation, tempScale, programName.c_str(), aiBehaviour.c_str(), tempPos2, tempAi2));
+		models.push_back(factory.createModel(entityName,fileName, tempPosition, tempRotation, tempScale, programName.c_str(), aiBehaviour.c_str(), tempPos2, tempAi2));
 		pListElement = pListElement->NextSiblingElement("Model");
 	}
 }

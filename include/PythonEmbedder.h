@@ -24,6 +24,7 @@ private:
 
 	bp::object sentence_module;
 	bp::object nlp_module;
+	bp::object nltk_module;
 
 };	
 

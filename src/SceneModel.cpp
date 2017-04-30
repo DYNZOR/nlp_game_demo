@@ -1,11 +1,13 @@
 #include "SceneModel.h"
+#include "AgentStates.h"
 
-SceneModel::SceneModel(std::string sName, const glm::vec3 vPos, glm::quat qRotation, glm::vec3 vScale, const char* kcProgName, std::string kcAiBehaviour, glm::vec3 vPos2, float fAi2)
+SceneModel::SceneModel(const std::string sEntityName, const std::string sFileNameIn, 
+	const glm::vec3 vPos, glm::quat qRotation, glm::vec3 vScale,
+	const char* kcProgName, std::string kcAiBehaviour, glm::vec3 vPos2, float fAi2) : SceneObject(sEntityName)
 {
-
 	//graphics = assetLoader::getInstance()->getModelComponent(model);
 
-	pModel = AssetManager::AssetManagerInstance()->getModel(sName);
+	pModel = AssetManager::AssetManagerInstance()->getModel(sFileNameIn);
 
 	//ModelManager::ModelManagerInstance()->getModelByName(sName);
 	// std::make_shared<Model>(Model(sName));
@@ -36,7 +38,7 @@ SceneModel::~SceneModel()
 
 void SceneModel::update(float dt)
 {
-
+	m_pCurrentState->Execute(this);
 }
 
 void SceneModel::render()

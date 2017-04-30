@@ -12,6 +12,7 @@
 #include "3rdParty\tinyxml2.h"
 #include "SceneModel.h"
 #include "ObjectFactory.h"
+#include "SceneAnalyser.h"
 
 //class SceneManager;
 /*! \class Scene
@@ -53,12 +54,14 @@ public:
 
 	virtual std::shared_ptr<SceneModel> getModel() = 0;
 
-	virtual std::vector<std::shared_ptr<SceneModel>> getModels() = 0;
+	virtual std::vector<std::shared_ptr<SceneModel>>& getModels() = 0;
+	virtual std::vector<std::shared_ptr<SceneModel>>::iterator getModelsIt() = 0;
 
     
 protected:
 
 	Scene() { }
+
 };
 
 #endif // SCENE_H

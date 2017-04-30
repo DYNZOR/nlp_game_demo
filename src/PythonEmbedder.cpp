@@ -13,7 +13,6 @@ PythonEmbedder::PythonEmbedder()
 
 		// ADD ABILITY TO MANIPULATE SENTENCE DATA EXTERNALLY 
 		SentenceData sentence;
-		sentence.words = 0;
 		sentence.sentence = "WORDS!";
 
 		bp::object process_stnc = nlp_module.attr("ProcessString")(boost::ref(sentence)); // gets the processstring function from my python file pyfile.py
@@ -64,6 +63,8 @@ void PythonEmbedder::SetPythonPath()
 void PythonEmbedder::ImportModules()
 {
 	sentence_module = bp::import("SentenceModule");
+	
+	nltk_module = bp::import("nltk");
 
 	nlp_module = bp::import("nlp");
 
