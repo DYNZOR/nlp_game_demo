@@ -3,34 +3,10 @@
 
 #include <sapi53.h>
 
-// Boost includes 
-//#include <boost/python.hpp>
-//#include <boost/filesystem.hpp>
-//#include <stdlib.h>
-
 #include "PythonEmbedder.h"
 
 #include "SceneManager.h"
 #include "MainScene.h"
-
-//namespace bp = boost::python;
-
-//
-//struct SentenceData
-//{
-//	int words;
-//	std::string sentence;
-//};
-//
-//BOOST_PYTHON_MODULE(SentenceModule)
-//{
-//
-//	bp::class_<SentenceData>("SentenceData")
-//		.def_readwrite("words", &SentenceData::words)
-//		.def_readwrite("sentence", &SentenceData::sentence)
-//		;
-//}
-
 
 const ULONGLONG grammarId = 0;
 const wchar_t* ruleName1 = L"ruleName1";
@@ -39,8 +15,6 @@ int start_listening(const std::string& word); // test function
 ISpRecoGrammar* init_grammar(ISpRecoContext* recoContext, const std::string& command);
 void get_text(ISpRecoContext* reco_context);
 void check_result(const HRESULT& result);
-
-
 
 
 //////////////////////////////////
@@ -56,17 +30,15 @@ int main(int argc, char ** argv)
 	// Speech recognition //
 	//start_listening("Hello");
 
-	SceneManager* manager = SceneManager::SceneManagerInstance();
+	SceneManager* pSceneManager = SceneManager::SceneManagerInstance();
 
-	manager->init();
+	pSceneManager->init();
 
-	manager->changeScene(MainScene::Instance());
+	pSceneManager->changeScene(MainScene::Instance());
 
-	//manager->resizeGL(manager->getActiveSceneCamera(), 1920, 1080);
+	pSceneManager->mainLoop();
 
-	manager->mainLoop();
-
-	manager->clean();
+	pSceneManager->clean();
 
 
 	// Exit program

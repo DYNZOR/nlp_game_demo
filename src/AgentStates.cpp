@@ -5,6 +5,28 @@
 #include "config.h"
 #include <iostream>
 
+// Methods for idle state 
+
+Idle_State* Idle_State::Instance()
+{
+	static Idle_State instance;
+	return &instance;
+}
+
+void Idle_State::Enter(SceneModel* SO)
+{
+	std::cout << "Idle: " << SO->GetDescription().m_sName << std::endl;
+}
+
+void Idle_State::Execute(SceneModel* SO, float tInterval)
+{
+}
+
+void Idle_State::Exit(SceneModel* SO)
+{
+	std::cout << "Stopped Idle: " << SO->GetDescription().m_sName << std::endl;
+}
+
 // Methods for rotate state 
 
 Rotate_State* Rotate_State::Instance()
@@ -18,9 +40,9 @@ void Rotate_State::Enter(SceneModel* SO)
 	std::cout << "Rotating: " << SO->GetDescription().m_sName << std::endl;
 }
 
-void Rotate_State::Execute(SceneModel* SO)
+void Rotate_State::Execute(SceneModel* SO, float tInterval)
 {
-	SO->getModelHandle()->rotate(-PI / 2, 0, 0);
+	SO->getModelHandle()->rotate(tInterval*0.1f, 0, 0);
 }
 
 void Rotate_State::Exit(SceneModel* SO)

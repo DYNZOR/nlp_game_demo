@@ -278,15 +278,6 @@
     <ClInclude Include="include\UniqueIdDistributor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Collect_State.h">
-      <Filter>Header Files\NLP\Agent States</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Rotate_State.h">
-      <Filter>Header Files\NLP\Agent States</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MoveToLocation_State.h">
-      <Filter>Header Files\NLP\Agent States</Filter>
-    </ClInclude>
     <ClInclude Include="include\State.h">
       <Filter>Header Files\NLP\Agent States</Filter>
     </ClInclude>
@@ -304,6 +295,9 @@
     </ClInclude>
     <ClInclude Include="include\AgentStates.h">
       <Filter>Header Files\NLP\Agent States</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PyModuleData.h">
+      <Filter>Header Files\Python</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -418,19 +412,13 @@
     <ClCompile Include="src\PythonEmbedder.cpp">
       <Filter>Source Files\Python</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rotate_State.cpp">
-      <Filter>Source Files\NLP\Agent States</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MoveToLocation_State.cpp">
-      <Filter>Source Files\NLP\Agent States</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CollectState.cpp">
-      <Filter>Source Files\NLP\Agent States</Filter>
-    </ClCompile>
     <ClCompile Include="src\AgentStates.cpp">
       <Filter>Source Files\NLP\Agent States</Filter>
     </ClCompile>
     <ClCompile Include="src\SceneAnalyser.cpp">
+      <Filter>Source Files\NLP\Integration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CommandInterpreter.cpp">
       <Filter>Source Files\NLP\Integration</Filter>
     </ClCompile>
   </ItemGroup>

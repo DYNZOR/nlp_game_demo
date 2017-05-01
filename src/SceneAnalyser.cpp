@@ -34,7 +34,7 @@ SceneContent* SceneAnalyser::AnalyseScene(Scene* pSceneIn)
 
 bool SceneAnalyser::EntityExists(std::string sName)
 {
-	SceneContent* content = m_SceneContentMap[1];
+	SceneContent* content = m_SceneContentMap[1]; // Current scene 
 
 	for (int i = 0; i < content->m_aNamedEntities.size(); ++i)
 	{

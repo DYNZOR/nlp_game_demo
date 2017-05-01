@@ -5,6 +5,24 @@
 
 class SceneModel;
 
+class Idle_State : public State
+{
+private:
+	Idle_State() {}
+
+	//copy ctor and assignment should be private
+	//Rotate_State(const Rotate_State&);
+	//Rotate_State& operator=(const Rotate_State&);
+public:
+	static Idle_State* Instance();
+
+	void Enter(SceneModel* SO) override;
+
+	void Execute(SceneModel* SO, float tInterval) override;
+
+	void Exit(SceneModel* SO) override;
+};
+
 class Rotate_State : public State
 {
 private:
@@ -18,7 +36,7 @@ public:
 
 	void Enter(SceneModel* SO) override;
 
-	void Execute(SceneModel* SO) override;
+	void Execute(SceneModel* SO, float tInterval) override;
 
 	void Exit(SceneModel* SO) override;
 };

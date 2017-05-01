@@ -28,13 +28,22 @@ void MainScene::initScene(SceneManager* manager)
 
 	gl::Enable(gl::DEPTH_TEST);
 
+	// Load a scene from an XML file
 	loadSceneFromXML("resources/xml/gameLayout.xml");
 
 	m_SceneAnalyser.ReadScene(this);
-
 	bool exists = m_SceneAnalyser.EntityExists("Bob");
 
+	SentenceData data;
+	data.sPersonEntity1 = "Bob";
+	data.sAction = "rotate";
 
+	m_CommandIntepreter.ProcessCommand(data, m_SceneAnalyser);
+
+
+
+
+	// Load cube map 
 	cubeMap = std::make_shared<CubeMap>("moonwaw");
 	cubeMap->setActiveShader(AssetManager::AssetManagerInstance()->getShaderProgram("skybox"));
 	cubeMap->loadCubeMap();
@@ -116,6 +125,11 @@ void MainScene::setUpMatrices(glm::mat4 matrix)
 void MainScene::update(float t)
 {
 	fAngle += (10.0f * t);
+
+	for (modelsIt = models.begin(); modelsIt != models.end(); ++modelsIt)
+	{
+		modelsIt->get()->update(t);
+	}
 }
 
 void MainScene::render()

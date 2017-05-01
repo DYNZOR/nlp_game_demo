@@ -1,18 +1,7 @@
 #include <boost/python.hpp>
+#include "PyModuleData.h"
 
 namespace bp = boost::python;
-
-struct SentenceData
-{
-	std::string sentence; // Sentence to be sent to NLP Module
-
-	std::string sAction; // Action in the sentence 
-	std::string sPersonEntity1; // Gameobject entity referred. 
-	std::string sPersonEntity2;
-	std::string sLocation; // Gameobject location 
-
-
-};
 
 BOOST_PYTHON_MODULE(SentenceModule)
 {

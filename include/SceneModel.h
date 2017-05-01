@@ -37,11 +37,7 @@ public:
 
 	std::shared_ptr<Model> getModelHandle() { return pModel;  }
 
-	void ChangeState(State* pNewState)
-	{
-		delete m_pCurrentState;
-		m_pCurrentState = pNewState;
-	}
+	void ChangeState(State* pNewState);
 
 private:
 	State* m_pCurrentState;

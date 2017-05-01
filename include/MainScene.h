@@ -7,6 +7,8 @@
 #include "scene.h"
 //#include "Model.h"
 #include "CubeMap.h"
+#include "CommandInterpreter.h"
+
 
 /*! \class MainScene
 \brief A mainscene class that inherits from the scene abstract class that handles the creation, updating and rendering 
@@ -63,6 +65,7 @@ private:
 	float fAngle;
 
 	SceneAnalyser m_SceneAnalyser;
+	CommandInterpreter m_CommandIntepreter;
 
 protected:
 

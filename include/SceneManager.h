@@ -77,6 +77,8 @@ public:
 
 	Camera* getActiveSceneCamera(); //!< Returns a pointer to the camera from the active scene 
 
+	Scene* GetActiveScene() { return scenes.back(); }
+
 
 	bool running() { return bRunning; } //!< Returns true if the scenemanager is running 
 

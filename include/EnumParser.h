@@ -30,7 +30,9 @@ EnumParser<EntityNames>::EnumParser()
 
 EnumParser<LocationNames>::EnumParser()
 {
-
+	enumMap["house"] = House;
+	enumMap["Paris"] = Paris;
+	enumMap["London"] = London;
 }
 
 #endif

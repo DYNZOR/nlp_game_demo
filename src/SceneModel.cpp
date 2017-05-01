@@ -5,17 +5,14 @@ SceneModel::SceneModel(const std::string sEntityName, const std::string sFileNam
 	const glm::vec3 vPos, glm::quat qRotation, glm::vec3 vScale,
 	const char* kcProgName, std::string kcAiBehaviour, glm::vec3 vPos2, float fAi2) : SceneObject(sEntityName)
 {
-	//graphics = assetLoader::getInstance()->getModelComponent(model);
-
 	pModel = AssetManager::AssetManagerInstance()->getModel(sFileNameIn);
+
+	// Setting the initial state to Idle
+	m_pCurrentState = Idle_State::Instance();
 
 	//ModelManager::ModelManagerInstance()->getModelByName(sName);
 	// std::make_shared<Model>(Model(sName));
 
-
-	//std::make_shared<Model>(sName);
-	//pModel->setDirectory(sPathIn);
-	//pModel->loadModel();
 
 	pModel->setActiveShader(AssetManager::AssetManagerInstance()->getShaderProgram(kcProgName));
 
@@ -38,7 +35,11 @@ SceneModel::~SceneModel()
 
 void SceneModel::update(float dt)
 {
-	m_pCurrentState->Execute(this);
+	if (m_pCurrentState)
+	{
+		m_pCurrentState->Execute(this, dt);
+
+	}
 }
 
 void SceneModel::render()
@@ -203,4 +204,20 @@ void SceneModel::turnTowards(glm::vec3 target)
 	{
 		pModel->rotate(turnSpeed, 0.0, 0.0);
 	}*/
+}
+
+void SceneModel::ChangeState(State* pNewState)
+{
+	//make sure both states are both valid before attempting to 
+	//call their methods
+	assert(m_pCurrentState && pNewState);
+
+	//call the exit method of the existing state
+	m_pCurrentState->Exit(this);
+
+	//change state to the new state
+	m_pCurrentState = pNewState;
+
+	//call the entry method of the new state
+	m_pCurrentState->Enter(this);
 }

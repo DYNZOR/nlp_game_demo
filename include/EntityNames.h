@@ -14,6 +14,7 @@ enum EntityNames {
 
 enum LocationNames {
 	House,
-
+	Paris,
+	London
 };
 #endif

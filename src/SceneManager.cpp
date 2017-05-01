@@ -155,9 +155,9 @@ void SceneManager::mainLoop()
 		handleInput(fInterval);
 
 		update(fInterval);
+		updateAI(fInterval);
 
 		render();
-		updateAI(fInterval);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
