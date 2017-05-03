@@ -39,18 +39,17 @@ PythonEmbedder::~PythonEmbedder()
 
 bool PythonEmbedder::ExecuteScript(SentenceData& sentence, CommandResponse& response)
 {
-	bp::object process_stnc = nlp_module.attr("ProcessSentence")(boost::ref(sentence), boost::ref(response));
-	return true;
-	//try
-	//{
-	//	return true;
-	//}
-	//catch (bp::error_already_set const&) {
+	try
+	{
+		bp::object process_stnc = nlp_module.attr("ProcessSentence")(boost::ref(sentence), boost::ref(response));
+		return true;
+	}
+	catch (bp::error_already_set const&) {
 
-	//	std::string s_Error = ParsePythonException();
-	//	std::cout << "An error in Python has occured: " << s_Error << std::endl;
-	//	return false;
-	//}
+		std::string s_Error = ParsePythonException();
+		std::cout << "An error in Python has occured: " << s_Error << std::endl;
+		return false;
+	}
 }
 
 

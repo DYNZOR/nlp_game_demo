@@ -71,10 +71,10 @@
     <SourcePath>.\src;.\libs\GLLoadGen\source;$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)include\3rdParty;C:\Users\DYN\AppData\Local\Programs\Python\Python35\include;libs\freetype;libs\FMOD\include;libs\assimp-3.1.1\include;$(SolutionDir)\include\3rdParty;$(SolutionDir)\include;libs\GLLoadGen\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)include\3rdParty;$(SolutionDir)include\3rdParty\python\include;libs\freetype;libs\FMOD\include;libs\assimp-3.1.1\include;$(SolutionDir)\include\3rdParty;$(SolutionDir)\include;libs\GLLoadGen\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <SourcePath>libs\GLLoadGen\source;$(VC_SourcePath);</SourcePath>
     <IntDir>$(SolutionDir)temp\$(Platform)\$(Configuration)\</IntDir>
-    <LibraryPath>$(SolutionDir)libs\boost\lib;libs\FMOD\lib64;libs\assimp-3.1.1\lib64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);C:\Users\DYN\AppData\Local\Programs\Python\Python35\libs</LibraryPath>
+    <LibraryPath>$(SolutionDir)libs\boost\lib;libs\FMOD\lib64;libs\assimp-3.1.1\lib64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)libs\python\libs</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <TargetExt>.dll</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
