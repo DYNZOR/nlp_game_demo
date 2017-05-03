@@ -25,14 +25,16 @@ EnumParser<EntityNames>::EnumParser()
 {
 	enumMap["Bob"] = BOB;
 	enumMap["Bill"] = BILL;
+	enumMap["Dinis"] = DINIS;
 }
 
 
 EnumParser<LocationNames>::EnumParser()
 {
-	enumMap["house"] = House;
-	enumMap["Paris"] = Paris;
-	enumMap["London"] = London;
+	enumMap["England"] = England;
+	enumMap["Germany"] = Germany;
+	enumMap["France"] = France;
+
 }
 
 #endif

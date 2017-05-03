@@ -91,6 +91,9 @@
     <Filter Include="Source Files\NLP\Integration">
       <UniqueIdentifier>{be0a7741-d8e3-413a-b940-15d509e9984b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ASR">
+      <UniqueIdentifier>{56ca9e89-58dd-43ee-89b0-5479a2695ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\basic.vert">
@@ -420,6 +423,9 @@
     </ClCompile>
     <ClCompile Include="src\CommandInterpreter.cpp">
       <Filter>Source Files\NLP\Integration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpeechRecognition.cpp">
+      <Filter>Source Files\ASR</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

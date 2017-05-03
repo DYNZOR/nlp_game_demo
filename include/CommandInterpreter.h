@@ -19,8 +19,6 @@ public:
 		}
 	}
 
-
-
 	bool ProcessCommand(const CommandResponse& dataIn, SceneAnalyser& analyser);
 
 

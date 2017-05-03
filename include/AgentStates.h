@@ -2,6 +2,7 @@
 #define AGENT_STATES_H
 
 #include "State.h"
+#include <memory>
 
 class SceneModel;
 
@@ -41,22 +42,38 @@ public:
 	void Exit(SceneModel* SO) override;
 };
 
+class Move_State : public State
+{
+private:
+	Move_State(std::shared_ptr<SceneModel> pLocationSO) { m_pLocationSO = pLocationSO; }
+
+	std::shared_ptr<SceneModel> m_pLocationSO;
+
+public:
+	static Move_State* Instance(std::shared_ptr<SceneModel> pLocationSO);
+
+	virtual void Enter(SceneModel* SO) override;
+
+	virtual void Execute(SceneModel* SO, float tInterval) override;
+
+	virtual void Exit(SceneModel* SO) override;
+};
+
 //class Collect_State : public State
 //{
 //private:
-//	Collect_State() {}
+//	Collect_State() { pModel = SO; }
 //
-//	//copy ctor and assignment should be private
-//	//Rotate_State(const Rotate_State&);
-//	//Rotate_State& operator=(const Rotate_State&);
+//	SceneModel* pModel;
+//
 //public:
-//	static Collect_State* Instance();
+//	static Collect_State* Instance(SceneModel* SO);
 //
-//	virtual void Enter(SceneObject* SO) override;
+//	virtual void Enter(SceneModel* SO) override;
 //
-//	virtual void Execute(SceneObject* SO) override;
+//	virtual void Execute(SceneModel* SO, float tInterval) override;
 //
-//	virtual void Exit(SceneObject* SO) override;
+//	virtual void Exit(SceneModel* SO) override;
 //};
 
 

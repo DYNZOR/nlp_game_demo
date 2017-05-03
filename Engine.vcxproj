@@ -249,6 +249,7 @@
     <ClCompile Include="src\Sound2DComponent.cpp" />
     <ClCompile Include="src\Sound3DComponent.cpp" />
     <ClCompile Include="src\SoundManager.cpp" />
+    <ClCompile Include="src\SpeechRecognition.cpp" />
     <ClCompile Include="src\splashScreen.cpp" />
     <ClCompile Include="src\StartScene.cpp" />
     <ClCompile Include="src\stdafx.cpp" />

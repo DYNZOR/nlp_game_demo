@@ -4,7 +4,7 @@
   
 <SceneObjects>
 
-  <Model>
+  <!--<Model>
       <filename>Dragon 2.5_fbx.fbx</filename>
       <name>Bill</name>
       <positionX>-8.0</positionX>
@@ -19,26 +19,41 @@
       <scaleZ>1.0</scaleZ>
       <shaderProgram>basic</shaderProgram>
 	 <aiBehaviour>none</aiBehaviour>
-	 </Model>
+	 </Model>-->
+  
+  <Model>
+    <filename>Majora2.obj</filename>
+    <name>Bob</name>
+    <positionX>-3.0</positionX>
+    <positionY>-1.5</positionY>
+    <positionZ>0.0</positionZ>
+    <rotationAngle>0.0</rotationAngle>
+    <rotationXAxis>0.0</rotationXAxis>
+    <rotationYAxis>1.0</rotationYAxis>
+    <rotationZAxis>0.0</rotationZAxis>
+    <scaleX>1.0</scaleX>
+    <scaleY>1.0</scaleY>
+    <scaleZ>1.0</scaleZ>
+    <shaderProgram>basic</shaderProgram>
+    <aiBehaviour>none</aiBehaviour>
+  </Model>
 
-   
-    <Model>
-      <filename>Majora2.obj</filename>
-      <name>Bob</name> 
-      <positionX>0.0</positionX>
-      <positionY>-1.5</positionY>
-      <positionZ>0.0</positionZ>
-      <rotationAngle>9.425</rotationAngle>
-      <rotationXAxis>0.0</rotationXAxis>
-      <rotationYAxis>1.0</rotationYAxis>
-      <rotationZAxis>0.0</rotationZAxis>
-      <scaleX>0.3</scaleX>
-      <scaleY>0.3</scaleY>
-      <scaleZ>0.3</scaleZ>
-      <shaderProgram>basic</shaderProgram>
-	 <aiBehaviour>none</aiBehaviour>
-    </Model>
-
+  <Model>
+    <filename>nanosuit.obj</filename>
+    <name>Dinis</name>
+    <positionX>3.0</positionX>
+    <positionY>-1.5</positionY>
+    <positionZ>10.0</positionZ>
+    <rotationAngle>3.14159</rotationAngle>
+    <rotationXAxis>0.0</rotationXAxis>
+    <rotationYAxis>1.0</rotationYAxis>
+    <rotationZAxis>0.0</rotationZAxis>
+    <scaleX>0.3</scaleX>
+    <scaleY>0.3</scaleY>
+    <scaleZ>0.3</scaleZ>
+    <shaderProgram>basic</shaderProgram>
+    <aiBehaviour>none</aiBehaviour>
+  </Model>
 
   </SceneObjects>
   

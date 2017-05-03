@@ -6,6 +6,7 @@
 enum EntityNames {
 	BOB,
 	BILL,
+	DINIS,
 	DRAGON,
 	COINS,
 	BALL,
@@ -13,8 +14,8 @@ enum EntityNames {
 };
 
 enum LocationNames {
-	House,
-	Paris,
-	London
+	France,
+	England,
+	Germany
 };
 #endif

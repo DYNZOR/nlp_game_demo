@@ -17,6 +17,7 @@ using std::string;
 #include "glm\gtc\type_ptr.hpp"
 
 #include "PythonEmbedder.h"
+#include "SpeechRecognition.h"
 
 using glm::vec3;
 
@@ -37,14 +38,6 @@ void MainScene::initScene(SceneManager* manager)
 	m_SceneAnalyser.ReadScene(this);
 	bool exists = m_SceneAnalyser.EntityExists("Bob");
 
-	SentenceData sentenceData;
-	sentenceData.sentence = "rotate Bob";
-	CommandResponse responseData;
-	responseData.sAction = "fuck";
-
-	PythonEmbedder::PyEmbedderInstance()->ExecuteScript(sentenceData, responseData);
-
-	CommandInterpreter::CommandInterpreterInstance()->ProcessCommand(responseData, m_SceneAnalyser);
 
 
 	// Load cube map 
@@ -79,16 +72,6 @@ void MainScene::initScene(SceneManager* manager)
 	AssetManager::AssetManagerInstance()->getShaderProgram("basic")->setUniform("texture_diffuse1", (int)0);
 	AssetManager::AssetManagerInstance()->getShaderProgram("basic")->setUniform("texture_specular1", (int)1);
 
-
-	//suit = new Model("resources/models/nanosuit/nanosuit.obj");
-	//suit->setPosition(0.0f, -1.5f, 0.0f);
-	//suit->setRotation(0.0f, 229.4f, 0.0f);
-	//suit->setScale(glm::vec3(0.3, 0.3, 0.3));
-
-
-	//dragon = new Model("resources/models/dragon/smaug.obj");
-
-	//spaceStation = new Model("resources/models/intercepter/Arc170.obj");
 	lastCursorPositionX = 0.0;
 	lastCursorPositionY = 0.0;
 	cursorPositionX = 0.0;
@@ -213,6 +196,22 @@ void MainScene::handleInput(float t, GLFWwindow* window)
 		getModel()->getModelHandle()->translate(t * MOVE_VELOCITY, 0, t * MOVE_VELOCITY);
 		getModel()->getModelHandle()->rotate(PI / 2, 0, 0);
 	}
+	if (glfwGetKey(window, GLFW_KEY_ENTER))
+	{
+		SpeechRecognition::SpeechRecoInstance()->start_listening("WORK GODDAMNIT!");
+
+		SentenceData sentenceData;
+		sentenceData.sentence = "rotate Bob";
+		//sentenceData.sentence = "rotate Bob";
+		CommandResponse responseData;
+		responseData.sAction = "fuck";
+
+		PythonEmbedder::PyEmbedderInstance()->ExecuteScript(sentenceData, responseData);
+
+		CommandInterpreter::CommandInterpreterInstance()->ProcessCommand(responseData, m_SceneAnalyser);
+	}
+
+
 	if (glfwGetKey(window, GLFW_KEY_UP))
 	{
 		if (cameraFollowDist.z > 0)
@@ -224,6 +223,7 @@ void MainScene::handleInput(float t, GLFWwindow* window)
 	{
 		cameraFollowDist.z += 0.1f;
 	}
+
 
 	pOri += deltaX*ROTATE_VELOCITY;
 	//camYOri += deltaY*ROTATE_VELOCITY;
