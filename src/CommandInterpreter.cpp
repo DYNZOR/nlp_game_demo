@@ -4,6 +4,8 @@
 #include "MainScene.h"
 #include "AgentStates.h"
 
+CommandInterpreter* CommandInterpreter::pCmdIntInstance;
+
 CommandInterpreter::CommandInterpreter()
 {
 
@@ -14,11 +16,26 @@ CommandInterpreter::~CommandInterpreter()
 
 }
 
-void CommandInterpreter::ProcessCommand(const SentenceData& dataIn, SceneAnalyser& analyser)
+bool CommandInterpreter::ProcessCommand(const CommandResponse& dataIn, SceneAnalyser& analyser)
 {
+	//if (dataIn.bHasLocation)
+	//{
 
+	//}
+	
 	if (analyser.EntityExists(dataIn.sPersonEntity1))
 	{
+		//if (dataIn.bHasLocation)
+		//{
+		//	if (analyser.LocationExists(dataIn.sLocation))
+		//	{
+		//		
+		//	}
+		//}
+		//else
+		//{
+
+		//}
 
 		std::shared_ptr<SceneModel> pModel = RetrieveSceneEntity(dataIn.sPersonEntity1);
 
@@ -30,6 +47,7 @@ void CommandInterpreter::ProcessCommand(const SentenceData& dataIn, SceneAnalyse
 		else if (dataIn.sAction == "rotate") 
 		{
 			pModel->ChangeState(Rotate_State::Instance());
+			return true;
 		} 
 
 
@@ -42,13 +60,14 @@ void CommandInterpreter::ProcessCommand(const SentenceData& dataIn, SceneAnalyse
 	}
 	else {
 		std::cout << "No entity exists in the scene with name: " + dataIn.sPersonEntity1 << std::endl;
+
+		return false;
 	}
 
 }
 
 std::shared_ptr<SceneModel> CommandInterpreter::RetrieveSceneEntity(std::string sEntityIn)
 {
-	//MainScene* pScene = static_cast<MainScene*>(SceneManager::SceneManagerInstance()->GetActiveScene());
 
 	Scene* pScene = SceneManager::SceneManagerInstance()->GetActiveScene();
 
@@ -59,15 +78,7 @@ std::shared_ptr<SceneModel> CommandInterpreter::RetrieveSceneEntity(std::string 
 
 		if (itr->get()->GetDescription().m_sName == sEntityIn)
 		{
-			
-			//return std::shared_ptr<SceneModel>(&*itr->get());
 			return *itr;
-
-			//std::shared_ptr<SceneModel> pEntityModel = std::make_shared<SceneModel>(*itr->get());
-			//SceneModel pNormEntityModel = *itr->get();
-			//std::shared_ptr<SceneModel> pEntityModel = std::make_shared<SceneModel>(pNormEntityModel);
-			//return pEntityModel;
-
 		}
 
 	}
@@ -84,11 +95,7 @@ std::shared_ptr<SceneModel> CommandInterpreter::RetrieveSceneLocation(std::strin
 
 		if (itr->get()->GetDescription().m_sName == sLocationIn)
 		{
-			//std::shared_ptr<SceneModel> pEntityModel = std::make_shared<SceneModel>(itr->get());
-			SceneModel pNormEntityModel = *itr->get();
-			std::shared_ptr<SceneModel> pEntityModel = std::make_shared<SceneModel>(pNormEntityModel);
-			return pEntityModel;
-
+			return *itr;
 		}
 
 	}

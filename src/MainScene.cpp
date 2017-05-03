@@ -15,6 +15,9 @@ using std::string;
 #include "glm\gtc\matrix_transform.hpp"
 #include "glm\gtx\transform.hpp"
 #include "glm\gtc\type_ptr.hpp"
+
+#include "PythonEmbedder.h"
+
 using glm::vec3;
 
 //MainScene::MainScene() { }
@@ -34,13 +37,14 @@ void MainScene::initScene(SceneManager* manager)
 	m_SceneAnalyser.ReadScene(this);
 	bool exists = m_SceneAnalyser.EntityExists("Bob");
 
-	SentenceData data;
-	data.sPersonEntity1 = "Bob";
-	data.sAction = "rotate";
+	SentenceData sentenceData;
+	sentenceData.sentence = "rotate Bob";
+	CommandResponse responseData;
+	responseData.sAction = "fuck";
 
-	m_CommandIntepreter.ProcessCommand(data, m_SceneAnalyser);
+	PythonEmbedder::PyEmbedderInstance()->ExecuteScript(sentenceData, responseData);
 
-
+	CommandInterpreter::CommandInterpreterInstance()->ProcessCommand(responseData, m_SceneAnalyser);
 
 
 	// Load cube map 

@@ -65,7 +65,6 @@ private:
 	float fAngle;
 
 	SceneAnalyser m_SceneAnalyser;
-	CommandInterpreter m_CommandIntepreter;
 
 protected:
 

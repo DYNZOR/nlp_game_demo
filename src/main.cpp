@@ -24,8 +24,7 @@ void check_result(const HRESULT& result);
 int main(int argc, char ** argv)
 {
 	// Embedding python // 
-	PythonEmbedder PyEmbedder = PythonEmbedder();
-
+	//PythonEmbedder::PyEmbedderInstance();
 
 	// Speech recognition //
 	//start_listening("Hello");

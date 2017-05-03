@@ -9,13 +9,27 @@ class CommandInterpreter
 {
 public:
 
-	CommandInterpreter();
-	~CommandInterpreter();
+	static CommandInterpreter* CommandInterpreterInstance()
+	{
+		if (!pCmdIntInstance) {
+			return pCmdIntInstance = new CommandInterpreter();
+		}
+		else {
+			return pCmdIntInstance;
+		}
+	}
 
-	void ProcessCommand(const SentenceData& dataIn, SceneAnalyser& analyser);
+
+
+	bool ProcessCommand(const CommandResponse& dataIn, SceneAnalyser& analyser);
 
 
 private:
+
+	static CommandInterpreter* pCmdIntInstance;
+
+	CommandInterpreter();
+	~CommandInterpreter();
 
 	std::shared_ptr<SceneModel> RetrieveSceneEntity(std::string sEntityIn);
 	std::shared_ptr<SceneModel> RetrieveSceneLocation(std::string sLocationIn);

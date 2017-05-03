@@ -2,9 +2,12 @@
 #include <iostream>
 #include "PyModules.h"
 
+PythonEmbedder* PythonEmbedder::pInstance;
+
 PythonEmbedder::PythonEmbedder()
 {
 	PyImport_AppendInittab("SentenceModule", &PyInit_SentenceModule);
+	PyImport_AppendInittab("CommandResponseModule", &PyInit_CommandResponseModule);
 	Py_Initialize();
 
 	try
@@ -12,14 +15,17 @@ PythonEmbedder::PythonEmbedder()
 		ImportModules();
 
 		// ADD ABILITY TO MANIPULATE SENTENCE DATA EXTERNALLY 
-		SentenceData sentence;
-		sentence.sentence = "WORDS!";
+		/*SentenceData sentence;
+		sentence.sentence = "rotate Bob";
 
-		bp::object process_stnc = nlp_module.attr("ProcessString")(boost::ref(sentence)); // gets the processstring function from my python file pyfile.py
+		CommandResponse response;
+		response.sAction = "fuck";*/
 
+		//bp::object process_stnc = nlp_module.attr("ProcessSentence")(boost::ref(sentence), boost::ref(response)); // gets the processstring function from my python file pyfile.py
+		std::cout << "Initialised the Python Intepreter and imported module..." << std::endl;
 	}
 	catch (bp::error_already_set const&) {
-
+		
 		std::string s_Error = ParsePythonException();
 		std::cout << "An error in Python has occured: " << s_Error << std::endl;
 	}
@@ -30,6 +36,23 @@ PythonEmbedder::~PythonEmbedder()
 {
 
 }
+
+bool PythonEmbedder::ExecuteScript(SentenceData& sentence, CommandResponse& response)
+{
+	bp::object process_stnc = nlp_module.attr("ProcessSentence")(boost::ref(sentence), boost::ref(response));
+	return true;
+	//try
+	//{
+	//	return true;
+	//}
+	//catch (bp::error_already_set const&) {
+
+	//	std::string s_Error = ParsePythonException();
+	//	std::cout << "An error in Python has occured: " << s_Error << std::endl;
+	//	return false;
+	//}
+}
+
 
 void PythonEmbedder::InitiateInterpreter()
 {
@@ -63,10 +86,9 @@ void PythonEmbedder::SetPythonPath()
 void PythonEmbedder::ImportModules()
 {
 	sentence_module = bp::import("SentenceModule");
-	
-	nltk_module = bp::import("nltk");
+	commandresponse_module = bp::import("CommandResponseModule");
 
-	nlp_module = bp::import("nlp");
+	nlp_module = bp::import("nlp_module");
 
 }
 
