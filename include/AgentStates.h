@@ -50,6 +50,7 @@ private:
 	std::shared_ptr<SceneModel> m_pLocationSO;
 
 public:
+
 	static Move_State* Instance(std::shared_ptr<SceneModel> pLocationSO);
 
 	virtual void Enter(SceneModel* SO) override;
@@ -59,22 +60,22 @@ public:
 	virtual void Exit(SceneModel* SO) override;
 };
 
-//class Collect_State : public State
-//{
-//private:
-//	Collect_State() { pModel = SO; }
-//
-//	SceneModel* pModel;
-//
-//public:
-//	static Collect_State* Instance(SceneModel* SO);
-//
-//	virtual void Enter(SceneModel* SO) override;
-//
-//	virtual void Execute(SceneModel* SO, float tInterval) override;
-//
-//	virtual void Exit(SceneModel* SO) override;
-//};
+class Collect_State : public State
+{
+private:
+	Collect_State(std::shared_ptr<SceneModel> pItemSO) { m_pItemSO = pItemSO; }
+
+	std::shared_ptr<SceneModel> m_pItemSO;
+
+public:
+	static Collect_State* Instance(std::shared_ptr<SceneModel> pItemSO);
+
+	virtual void Enter(SceneModel* SO) override;
+
+	virtual void Execute(SceneModel* SO, float tInterval) override;
+
+	virtual void Exit(SceneModel* SO) override;
+};
 
 
 

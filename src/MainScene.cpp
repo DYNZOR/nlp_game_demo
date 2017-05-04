@@ -80,6 +80,18 @@ void MainScene::initScene(SceneManager* manager)
 	cameraFollowDist = glm::vec3(0, 5, 5);
 	SceneManager::SceneManagerInstance()->splashscreen(false);
 
+	m_aSentence.push_back("move Bob to Germany");
+	m_aSentence.push_back("move Bob to England");
+	m_aSentence.push_back("move Bob to France");
+	//m_aSentence.push_back("rotate Bob");
+
+	//m_aSentence.push_back("stop rotating Bob");
+	//m_aSentence.push_back("collect the coins Bob");
+	//m_aSentence.push_back("rotate Bob");
+	//m_aSentence.push_back("rotate Bob");
+	//m_aSentence.push_back("rotate Bob");
+
+
 }
 
 void MainScene::setLightParams()
@@ -198,13 +210,17 @@ void MainScene::handleInput(float t, GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_ENTER))
 	{
-		SpeechRecognition::SpeechRecoInstance()->start_listening("WORK GODDAMNIT!");
+		//SpeechRecognition::SpeechRecoInstance()->start_listening("WORK GODDAMNIT!");
+
+		std::string sentence = m_aSentence[count];
+		count++;
 
 		SentenceData sentenceData;
-		sentenceData.sentence = "rotate Bob";
+		sentenceData.sentence = sentence;
+
+
 		//sentenceData.sentence = "rotate Bob";
 		CommandResponse responseData;
-		responseData.sAction = "fuck";
 
 		PythonEmbedder::PyEmbedderInstance()->ExecuteScript(sentenceData, responseData);
 

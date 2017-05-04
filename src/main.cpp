@@ -12,7 +12,7 @@
 int main(int argc, char ** argv)
 {
 
-	SpeechRecognition::SpeechRecoInstance();
+	//SpeechRecognition::SpeechRecoInstance();
 
 	SceneManager* pSceneManager = SceneManager::SceneManagerInstance();
 

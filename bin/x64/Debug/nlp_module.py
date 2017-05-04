@@ -13,13 +13,11 @@ def ProcessSentence(sentence, command_response):
         sample = 'delete Bob';
         sample = 'create coins';
 
-        sample = 'short Bob move to  the coins';
-        sample = 'hello Bob'
-
         sample = 'Bob collect the coins';
-        sample = 'move green short Bob to Paris'
         sample = 'stop moving Bob'
         sample = 'rotate Bob';
+        sample = 'move Bob to Paris'
+        sample = 'short Bob go to Germany';
 
         sample = sentence.sentence
 
@@ -63,7 +61,9 @@ def ProcessSentence(sentence, command_response):
         print (named_entities_str)
         print (named_entities_str_tag)
         print ('\n')
-
+        
+        entity = named_entities_str[0]
+        location = named_entities_str[1]
         present_actions = []
         actions = []
         characteristics = []
@@ -82,15 +82,33 @@ def ProcessSentence(sentence, command_response):
             elif item[1] == 'JJ': ## Adjective
                 characteristics.append(item[0])
 
+        print('Outputting... \n')
+        print('Entity: ', entity)
+        print('Location: ', location)
         print('Present actions: ', present_actions)
         print('Actions: ', actions)
         print('Characteristics', characteristics)
 
         command_response.sAction = actions[0]
+        command_response.sLocation = location
         command_response.sPersonEntity1 = named_entities_str[0]
 
-        ##command_response.sPersonEntity1 = 
-        command_response.bHasLocation = 0;
+        
+        ##command_response.sPresentAction = present_actions[0]
+        ##command_response.sPersonEntity1 =
+
+        bHasLocation = 0;
+
+        if "Germany" in location:
+            bHasLocation = 1
+        elif "France" in location:
+            bHasLocation = 1
+        elif "England" in location:
+            bHasLocation = 1
+            
+        print('Location count', bHasLocation)
+                
+        command_response.bHasLocation = bHasLocation;
         command_response.bCancelAction = 0;
 
         ## Time taken to execute the script

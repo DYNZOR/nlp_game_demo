@@ -11,6 +11,8 @@ SceneObject::SceneObject(const std::string entityname)
 
 	SetID(parser.ParseSomeEnum(entityname));
 	m_pDescription.m_sName = entityname;
+
+
 }
 
 SceneObject::~SceneObject()

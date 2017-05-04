@@ -4,18 +4,23 @@
 #include <string>
 
 enum EntityNames {
+
+	DEFAULT,
 	BOB,
 	BILL,
 	DINIS,
 	DRAGON,
-	COINS,
+	COIN,
 	BALL,
 	CUBE,
-};
-
-enum LocationNames {
 	France,
 	England,
 	Germany
+};
+
+enum LocationNames {
+	//France,
+	//England,
+	//Germany
 };
 #endif

@@ -10,8 +10,8 @@ struct SentenceData
 //typedef std::vector<std::string> VectorStrings;
 struct CommandResponse
 {
-	bool bHasLocation;
-	bool bCancelAction;
+	int bHasLocation;
+	int bCancelAction;
 
 	std::string sAction; // Action in the sentence 
 	std::string sPresentAction;

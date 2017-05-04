@@ -66,6 +66,11 @@ private:
 
 	SceneAnalyser m_SceneAnalyser;
 
+	unsigned int count = 0;
+	std::vector<std::string> m_aSentence;
+	std::string nextSentence;
+
+
 protected:
 
 	MainScene() {}

@@ -18,51 +18,64 @@ CommandInterpreter::~CommandInterpreter()
 
 bool CommandInterpreter::ProcessCommand(const CommandResponse& dataIn, SceneAnalyser& analyser)
 {
-	//if (dataIn.bHasLocation)
-	//{
-
-	//}
-	
-	if (analyser.EntityExists(dataIn.sPersonEntity1))
+	if (dataIn.bHasLocation == 1)
 	{
-		//if (dataIn.bHasLocation)
-		//{
-		//	if (analyser.LocationExists(dataIn.sLocation))
-		//	{
-		//		
-		//	}
-		//}
-		//else
-		//{
-
-		//}
-
-		std::shared_ptr<SceneModel> pModel = RetrieveSceneEntity(dataIn.sPersonEntity1);
-
-		if (dataIn.sAction == "move")
+		// Check entity exists
+		if (analyser.EntityExists(dataIn.sPersonEntity1))
 		{
+			std::shared_ptr<SceneModel> pModel = RetrieveSceneEntity(dataIn.sPersonEntity1);
+
+			// Check location exists
+			if (analyser.EntityExists(dataIn.sLocation))
+			{
+				std::shared_ptr<SceneModel> pLocation = RetrieveSceneEntity(dataIn.sLocation);
+
+				if (dataIn.sAction == "move")
+				{
+					pModel->ChangeState(Move_State::Instance(pLocation));
+					return true;
+				}
+				else if (dataIn.sAction == "collect")
+				{
+					pModel->ChangeState(Collect_State::Instance(pLocation));
+				}
+			}
+			else
+			{
+				std::cout << "No location exists in the scene with name: " + dataIn.sPersonEntity1 << std::endl;
+				return false;
+			}
 
 		}
-
-		else if (dataIn.sAction == "rotate") 
+		else {
+			std::cout << "No entity exists in the scene with name: " + dataIn.sPersonEntity1 << std::endl;
+			return false;
+		}
+	}
+	else
+	{
+		// Check entity exists
+		if (analyser.EntityExists(dataIn.sPersonEntity1))
 		{
-			pModel->ChangeState(Rotate_State::Instance());
-			return true;
+			std::shared_ptr<SceneModel> pModel = RetrieveSceneEntity(dataIn.sPersonEntity1);
+
+			if (dataIn.sAction == "rotate")
+			{
+				pModel->ChangeState(Rotate_State::Instance());
+				return true;
+			}
+			
 		} 
-
-
-		else if (dataIn.sAction == "collect")
+		else
 		{
-
+			std::cout << "No entity exists in the scene with name: " + dataIn.sPersonEntity1 << std::endl;
+			return false;
 		}
 
-
+		
 	}
-	else {
-		std::cout << "No entity exists in the scene with name: " + dataIn.sPersonEntity1 << std::endl;
-
-		return false;
-	}
+	
+	
 
 }
 

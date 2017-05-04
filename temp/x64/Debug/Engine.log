@@ -1,1 +1,10 @@
-﻿
+﻿  main.cpp
+  MainScene.cpp
+c:\users\dyn\desktop\aci_mini_project\include\3rdparty\boost\python\detail\caller.hpp(55): warning C4244: 'return': conversion from 'Py_ssize_t' to 'unsigned int', possible loss of data
+c:\users\dyn\desktop\aci_mini_project\src\mainscene.cpp(199): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\dyn\desktop\aci_mini_project\src\mainscene.cpp(201): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\dyn\desktop\aci_mini_project\src\mainscene.cpp(207): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\dyn\desktop\aci_mini_project\src\mainscene.cpp(209): warning C4305: 'argument': truncation from 'double' to 'const float'
+  Generating Code...
+  Engine.vcxproj -> C:\Users\DYN\Desktop\ACI_Mini_Project\bin\x64\Debug\Engine.dll
+  Engine.vcxproj -> C:\Users\DYN\Desktop\ACI_Mini_Project\bin\x64\Debug\Engine.pdb (Full PDB)

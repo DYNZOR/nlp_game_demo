@@ -23,17 +23,24 @@ public:
 
 EnumParser<EntityNames>::EnumParser()
 {
+	enumMap[""] = DEFAULT;
 	enumMap["Bob"] = BOB;
 	enumMap["Bill"] = BILL;
 	enumMap["Dinis"] = DINIS;
+	enumMap["coin"] = COIN;
+
+	enumMap["England"] = England;
+	enumMap["France"] = France;
+	enumMap["Germany"] = Germany;
+	
 }
 
 
 EnumParser<LocationNames>::EnumParser()
 {
-	enumMap["England"] = England;
-	enumMap["Germany"] = Germany;
-	enumMap["France"] = France;
+	//enumMap["England"] = England;
+	//enumMap["Germany"] = Germany;
+	//enumMap["France"] = France;
 
 }
 
