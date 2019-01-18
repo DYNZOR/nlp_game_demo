@@ -1,5 +1,6 @@
 # NLP + Game Demo (Unfinished)
 
+[Report](reports/report.pdf)
 
 # To Complete 
 
