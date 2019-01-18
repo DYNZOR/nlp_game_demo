@@ -1,0 +1,98 @@
+#include "FmodSettings.h"
+
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropOFF()
+{
+	return FMOD_PRESET_OFF;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropGENERIC()
+{
+	return FMOD_PRESET_GENERIC;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropPADDEDCELL()
+{
+	return FMOD_PRESET_PADDEDCELL;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropROOM()
+{
+	return FMOD_PRESET_ROOM;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropBATHROOM()
+{
+	return FMOD_PRESET_BATHROOM;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropLIVINGROOM()
+{
+	return FMOD_PRESET_LIVINGROOM;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropSTONEROOM()
+{
+	return FMOD_PRESET_STONEROOM;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropAUDITORIUM()
+{
+	return FMOD_PRESET_AUDITORIUM;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropCONCERTHALL()
+{
+	return FMOD_PRESET_CONCERTHALL;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropCAVE()
+{
+	return FMOD_PRESET_CAVE;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropARENA()
+{
+	return FMOD_PRESET_ARENA;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropHANGAR()
+{
+	return FMOD_PRESET_HANGAR;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropCARPETTEDHALLWAY()
+{
+	return FMOD_PRESET_CARPETTEDHALLWAY;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropHALLWAY()
+{
+	return FMOD_PRESET_HALLWAY;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropSTONECORRIDOR()
+{
+	return FMOD_PRESET_STONECORRIDOR;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropALLEY()
+{
+	return FMOD_PRESET_ALLEY;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropFOREST()
+{
+	return FMOD_PRESET_FOREST;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropCITY()
+{ 
+	return FMOD_PRESET_CITY;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropMOUNTAINS()
+{
+	return FMOD_PRESET_MOUNTAINS;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropQUARRY()
+{
+	return FMOD_PRESET_QUARRY;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropPLAIN()
+{
+	return FMOD_PRESET_PLAIN;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropPARKINGLOT()
+{
+	return FMOD_PRESET_PARKINGLOT;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropSEWERPIPE()
+{
+	return FMOD_PRESET_SEWERPIPE;
+}
+FMOD_REVERB_PROPERTIES FmodSettings::getReverbPropUNDERWATER()
+{
+	return FMOD_PRESET_UNDERWATER; 
+}
