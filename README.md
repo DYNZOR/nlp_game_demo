@@ -2,7 +2,7 @@
 
 [Report](reports/report.pdf)
 
-# To Complete 
+# Improvements necesary
 
 * Better speech-to-text software other than Microsofts SAPI 5.4. A good candidate would be Mozilla's DeepSpeech. 
 * FMOD audio engine for recording microphone input to send to the speech-to-text engine. 
